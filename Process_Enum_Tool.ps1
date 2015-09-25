@@ -31,6 +31,8 @@ function main
     Write-Host "1. List Running Processes"
     Write-Host "2. List Running Processes by Company"
     Write-Host "3. Validate a process' signature"
+    Write-Host ""
+    Write-Host "0. Exit"
     ""
     $menuSelect = Read-host "Selection"
     Switch ($menuSelect)
@@ -38,7 +40,8 @@ function main
        1 {list}
        2 {listbycomp}
        3 {validate}
-       Default {Write-Host "Invalid Selection"}
+       0 {Write-Host "Goodbye" -ForegroundColor Red}
+       Default {Write-Host "Invalid Selection -- Eventually this will loop back to main :)"}
      }
 }
 
@@ -105,6 +108,8 @@ banner
     Write-Host "1. List Running Processes"
     Write-Host "2. List Running Processes by Company"
     Write-Host "3. Validate a process' signature"
+    Write-Host ""
+    Write-Host "0. Exit"
     ""
     $menuSelect = Read-host "Selection"
     Switch ($menuSelect)
@@ -112,5 +117,6 @@ banner
         1 {list}
         2 {listbycomp}
         3 {validate}
-        Default {Write-Host "Invalid Selection"}
+        0 {Write-Host "Goodbye" -ForegroundColor Red}
+        Default {Write-Host "Invalid Selection -- Eventually this will loop back to main :)"}
        }
