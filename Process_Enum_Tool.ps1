@@ -41,7 +41,7 @@ function main
        2 {listbycomp}
        3 {validate}
        0 {Write-Host "Goodbye" -ForegroundColor Red}
-       Default {Write-Host "Invalid Selection -- Eventually this will loop back to main :)"}
+       Default {main}
      }
 }
 
@@ -57,17 +57,19 @@ function list
 function listbycomp
 {
         Clear-Host
-        "Would you like to"
-        "1. See results in the shell"
-        "2. Export resilts to a CSV"
-    $a = Read-Host "Selection: "
-    if ($a -eq "1")
-        {Get-Process | Group-Object company | Sort-Object name}
-    elseif ($a -eq "2")
-        {$b = Read-Host "What would you like to name your file?"
-        ""
-        $c = Read-Host "Where would you like to save your file?"
-        Get-Process | Group-Object company | Sort-Object name | Export-Csv -path $c$b.csv}
+        Write-Host "Would you like to"
+        Write-Host "1. See results in the shell"
+        Write-Host "2. Export results to a CSV"
+        $menuSelect = Read-host "Selection"
+        Switch ($menuSelect)
+        {
+            1 {Get-Process | Group-Object company | Sort-Object name}
+            2 {$b = Read-Host "What would you like to name your file?"
+               ""
+               $c = Read-Host "Where would you like to save your file?"
+               Get-Process | Group-Object company | Sort-Object name | Export-Csv -path $c$b.csv}
+            Default {Write-Host "Invalid Selection"}
+     }
     end
 }
 
@@ -86,14 +88,11 @@ function end
 {
     ""
     ""
-    "Whould you like to:"
-    "1. Return to Main Menu"
-    "2. Exit"
-    $end =  Read-Host "Selection"
+    $end =  Read-Host "Press ENTER to return to the main menu"
         if ($end = 1)
             {main}
         elseif ($end = 2)
-            {exit}
+            {}
 }
 function bye
 {
@@ -118,5 +117,5 @@ banner
         2 {listbycomp}
         3 {validate}
         0 {Write-Host "Goodbye" -ForegroundColor Red}
-        Default {Write-Host "Invalid Selection -- Eventually this will loop back to main :)"}
+        Default {main}
        }
