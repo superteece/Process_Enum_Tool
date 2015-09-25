@@ -7,6 +7,10 @@
 # |_|   |_|  \___/ \___\___||___/___/ |______|_| |_|\__,_|_| |_| |_| #
 #                                                                    #
 #Tool for enumerating processes via Windows Powershell               #
+#TC Johnson                                                          #
+#TC@geekministry.org                                                 #
+#ASCII Art created at: patorjk.com/software/taag/                    #
+#Special thanks to the folks at Freenode #Powershell                 #
 ######################################################################
 
 
