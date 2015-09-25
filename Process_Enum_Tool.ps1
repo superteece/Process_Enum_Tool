@@ -12,12 +12,13 @@
 
 function banner
 {
-"  _____                               ______                       "
-" |  __ \                             |  ____|                      "
-" | |__) | __ ___   ___ ___  ___ ___  | |__   _ __  _   _ _ __ ___  "
-" |  ___/ '__/ _ \ / __/ _ \/ __/ __| |  __| | '_ \| | | | '_ ` _   \"
-" | |   | | | (_) | (_|  __/\__ \__ \ | |____| | | | |_| | | | | | |"
-" |_|   |_|  \___/ \___\___||___/___/ |______|_| |_|\__,_|_| |_| |_|"
+
+Write-Host "  _____                               ______                       " -foreground Green
+Write-Host " |  __ \                             |  ____|                      " -foreground Green
+Write-Host " | |__) | __ ___   ___ ___  ___ ___  | |__   _ __  _   _ _ __ ___  " -foreground Green
+Write-Host " |  ___/ '__/ _ \ / __/ _ \/ __/ __| |  __| | '_ \| | | | '_ ` _   \" -foreground Green
+Write-Host " | |   | | | (_) | (_|  __/\__ \__ \ | |____| | | | |_| | | | | | |" -foreground Green
+Write-Host " |_|   |_|  \___/ \___\___||___/___/ |______|_| |_|\__,_|_| |_| |_|" -foreground Green
 ""
 }
 
@@ -26,18 +27,19 @@ function main
 {
     Clear-Host
     banner
-    "Select a tool"
-    "1. List Running Processes"
-    "2. List Running Processes by Company"
-    "3. Validate a process' signature"
+    Write-Host "Select a tool"
+    Write-Host "1. List Running Processes"
+    Write-Host "2. List Running Processes by Company"
+    Write-Host "3. Validate a process' signature"
     ""
-    $response = Read-Host "Selection"
-        if ($response -eq 1)
-            {list}
-        elseif ($response -eq 2)
-            {listbycomp}
-        elseif ($response -eq 3)
-            {validate}
+    $menuSelect = Read-host "Selection"
+    Switch ($menuSelect)
+     {
+       1 {list}
+       2 {listbycomp}
+       3 {validate}
+       Default {Write-Host "Invalid Selection"}
+     }
 }
 
 #Simply list all running processes.
@@ -97,18 +99,18 @@ function bye
 
 clear-host
 banner
-    "Select a tool"
-    "1. List Running Processes"
-    "2. List Running Processes by Company"
-    "3. Validate a process' signature"
-    #"4. List Running Processes Which"
-    #"   Do Not Possess a Valid Signature"
-    #  #4 is in work
+    Clear-Host
+    banner
+    Write-Host "Select a tool"
+    Write-Host "1. List Running Processes"
+    Write-Host "2. List Running Processes by Company"
+    Write-Host "3. Validate a process' signature"
     ""
-    $response = Read-Host "Selection"
-        if ($response -eq 1)
-            {list}
-        elseif ($response -eq 2)
-            {listbycomp}
-        elseif ($response -eq 3)
-            {validate}
+    $menuSelect = Read-host "Selection"
+    Switch ($menuSelect)
+       {
+        1 {list}
+        2 {listbycomp}
+        3 {validate}
+        Default {Write-Host "Invalid Selection"}
+       }
