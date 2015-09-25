@@ -40,7 +40,7 @@ function main
        1 {list}
        2 {listbycomp}
        3 {validate}
-       0 {Write-Host "Goodbye" -ForegroundColor Red}
+       0 {Clear-Host}
        Default {main}
      }
 }
@@ -83,22 +83,22 @@ $procName = Read-Host "Enter the name of the process to validate"
     end
 }
 
-#Runs at the end of each operation to give the option of returning to the main menu or exiting the script
+#Runs at the end of each operation to give the option of returning to the main menu
 function end
 {
     ""
     ""
-    $end =  Read-Host "Press ENTER to return to the main menu"
-        if ($end = 1)
-            {main}
-        elseif ($end = 2)
-            {}
+    Read-Host 'Press Enter to return to main menu...' | Out-Null
+    main
 }
+
 function bye
 {
     "Good Bye"
 }
 
+
+#This is the main menu which is first presente when the script is executed
 clear-host
 banner
     Clear-Host
@@ -116,6 +116,6 @@ banner
         1 {list}
         2 {listbycomp}
         3 {validate}
-        0 {Write-Host "Goodbye" -ForegroundColor Red}
+        0 {Clear-Host}
         Default {main}
        }
