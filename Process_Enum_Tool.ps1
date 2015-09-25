@@ -9,7 +9,6 @@
 #Tool for enumerating processes via Windows Powershell               #
 ######################################################################
 
-#A function of the main menu used by other functions to return to main
 
 function banner
 {
@@ -22,6 +21,7 @@ function banner
 ""
 }
 
+#A function of the main menu used by other functions to return to main
 function main
 {
     Clear-Host
@@ -101,6 +101,9 @@ banner
     "1. List Running Processes"
     "2. List Running Processes by Company"
     "3. Validate a process' signature"
+    #"4. List Running Processes Which"
+    #"   Do Not Possess a Valid Signature"
+    #  #4 is in work
     ""
     $response = Read-Host "Selection"
         if ($response -eq 1)
