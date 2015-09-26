@@ -35,16 +35,18 @@ function main
     Write-Host "1. List Running Processes"
     Write-Host "2. List Running Processes by Company"
     Write-Host "3. Validate a process' signature"
+    Write-Host "4. Auto Validate signatures of all processes"
     Write-Host ""
     Write-Host "0. Exit"
     ""
     $menuSelect = Read-host "Selection"
     Switch ($menuSelect)
-     {
-       1 {list}
-       2 {listbycomp}
-       3 {validate}
-       0 {Clear-Host}
+       {
+        1 {list}
+        2 {listbycomp}
+        3 {validate}
+        4 {autoCheck}
+        0 {Clear-Host}
        Default {main}
      }
 }
@@ -87,6 +89,17 @@ $procName = Read-Host "Enter the name of the process to validate"
     end
 }
 
+#Automatically check the signature validity of each running process
+function autoCheck
+{
+foreach ($item in Get-Process)
+    {
+    $procValidate = Get-Process $item.Name | select -Expand Path | select -Unique
+    Get-AuthenticodeSignature "$procValidate"
+    }
+    end
+}
+
 #Runs at the end of each operation to give the option of returning to the main menu
 function end
 {
@@ -102,7 +115,7 @@ function bye
 }
 
 
-#This is the main menu which is first presente when the script is executed
+#This is the main menu which is first presented when the script is executed
 clear-host
 banner
     Clear-Host
@@ -111,6 +124,7 @@ banner
     Write-Host "1. List Running Processes"
     Write-Host "2. List Running Processes by Company"
     Write-Host "3. Validate a process' signature"
+    Write-Host "4. Auto Validate signatures of all processes"
     Write-Host ""
     Write-Host "0. Exit"
     ""
@@ -120,6 +134,7 @@ banner
         1 {list}
         2 {listbycomp}
         3 {validate}
+        4 {autoCheck}
         0 {Clear-Host}
         Default {main}
        }
