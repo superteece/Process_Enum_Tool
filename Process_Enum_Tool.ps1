@@ -44,7 +44,7 @@ function main
         2 {listbycomp}
         3 {validate}
         4 {autoCheck}
-        0 {Clear-Host}
+        0 {Clear-Host; Break}
        Default {main}
      }
 }
@@ -113,26 +113,4 @@ function bye
 }
 
 
-#This is the main menu which is first presented when the script is executed
-clear-host
-banner
-    Clear-Host
-    banner
-    Write-Host "Select a tool"
-    Write-Host "1. List Running Processes"
-    Write-Host "2. List Running Processes by Company"
-    Write-Host "3. Validate a process' signature"
-    Write-Host "4. Auto Validate signatures of all processes"
-    Write-Host ""
-    Write-Host "0. Exit"
-    ""
-    $menuSelect = Read-host "Selection"
-    Switch ($menuSelect)
-       {
-        1 {list}
-        2 {listbycomp}
-        3 {validate}
-        4 {autoCheck}
-        0 {Clear-Host}
-        Default {main}
-       }
+main
